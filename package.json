@@ -1,0 +1,13 @@
+{
+  "name": "tiago-ai",
+  "version": "1.0.0",
+  "description": "A super lightweight blog — drop .md files in posts/ and they appear.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "marked": "^12.0.0"
+  },
+  "license": "Unlicense"
+}
