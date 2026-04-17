@@ -165,11 +165,12 @@ For `.ozx`, reading a thumbnail is a single `unzip -p` regardless of file size, 
 
 This is a minimum-viable prototype. Real extensions:
 
-- **Fallback paths.** Check multiple conventional paths (ODF-style `Thumbnails/thumbnail.png`, the [size-suffixed `thumbnails/thumbnail_256.jpg` proposed in the OME-Zarr spec discussion](https://github.com/German-BioImaging/ome-zarr-ideas/issues/43)) and use whichever exists.
-- **Pyramid fallback.** When no thumbnail is pre-baked, read the coarsest multiscale level with `zarr-python`, apply `omero.channels` rendering settings, and render on the fly. ~100 lines of Python. Works on any OME-Zarr.
-- **macOS and Windows.** Same zip, same known path, totally different machinery — Quick Look extensions on macOS, MSIX-packaged `IThumbnailProvider` on Windows. The convention is OS-agnostic; only the plumbing changes.
+- **Fallback paths.** Check multiple conventional paths (ODF-style `Thumbnails/thumbnail.png`, the [size-suffixed `thumbnails/thumbnail_256.jpg` proposed in the OME-Zarr spec discussion](https://github.com/German-BioImaging/ome-zarr-ideas/issues/43)) and use whichever exists. Ideally actually get information from `zarr.json`. 
+- **macOS and Windows.** Same zip, same known path, totally different machinery — Quick Look extensions on macOS, MSIX-packaged `IThumbnailProvider` on Windows. The .odt convention is OS-agnostic; only the plumbing changes.
 
 ## Why this matters
+
+> NOTE This is the take of AI slop, not mine: 
 
 OME-Zarr is a wonderful format — multiscale pyramids, cloud-friendly, HCS-aware. But until the file manager story is solved, researchers downloading data from IDR see only a generic zip icon. Ten minutes of setup and a one-line bash script change that.
 
